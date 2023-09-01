@@ -52,16 +52,13 @@
       }
 
       #result {
-        width: 95%;
+        width: 90%;
         padding: 10px;
         border-radius: 5px;
         border: 1px solid #000;
         background-color: #fff;
         font-size: large;
         text-align: right;
-      }
-
-      #calculator table td input:hover {
       }
 
       #calculator table td input:active {
@@ -74,7 +71,13 @@
       <table>
         <tr>
           <td colspan="4">
-            <input type="text" id="result" disabled />
+            <label for="result">Result</label>
+            <input 
+              type="text" 
+              id="result" 
+              disabled
+            />
+            
           </td>
         </tr>
         <tr>

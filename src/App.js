@@ -19,6 +19,7 @@ class App {
     this.focused = false;
     this.closed = true;
     this.minimized = false;
+    this.resizeDisabled = false;
   }
   createHTML() {
     this.newApp = document.createElement("div");
@@ -157,10 +158,13 @@ class App {
     this.newApp.style.width = `${width}px`;
     this.newApp.style.height = `${height}px`;
   }
+  disableResize() {
+    this.resizeDisabled = true;
+    this.newApp.style.resize = "none";
+  }
   getSize() {
     return { width: this.newApp.offsetWidth, height: this.newApp.offsetHeight };
   }
-
   minimize() {
     this.minimized = true;
     this.newApp.style.display = "none";
@@ -189,7 +193,6 @@ class App {
     this.closed = true;
     this.parentWindow.removeApp(this);
   }
-
   open() {
     if (this.minimized) {
       this.newApp.style.display = "block";
@@ -209,6 +212,9 @@ class App {
       this.setSize(this.setWidth, this.setHeight);
 
       this.closed = false;
+    }
+    if(this.resizeDisabled) {
+      this.disableResize();
     }
   }
   async init() {
